@@ -102,7 +102,6 @@
             top: 8px;
         }
 
-        /* Hide toggle button on desktop and show on mobile */
         @media (min-width: 769px) {
             #toggleSidebar {
                 display: none;
@@ -166,7 +165,7 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.navbar -->
+
 
         <aside class="sidebar">
             <div href="/dashboard" class="brand-link d-flex align-items-center mb-3">
@@ -227,7 +226,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script>
         function logout(event) {
@@ -254,7 +252,6 @@
             }).addClass('active');
         });
 
-        // Toggle sidebar visibility
         $('#toggleSidebar').click(function() {
             $('.sidebar').toggleClass('sidebar-hidden');
             $('.content-wrapper').toggleClass('content-expanded');

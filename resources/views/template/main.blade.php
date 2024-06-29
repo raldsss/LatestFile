@@ -102,7 +102,6 @@
             top: 8px;
         }
 
-        /* Hide toggle button on desktop and show on mobile */
         @media (min-width: 769px) {
             #toggleSidebar {
                 display: none;
@@ -178,9 +177,6 @@
             </ul>
         </nav>
 
-
-
-        <!-- /.navbar -->
 
         <aside class="sidebar">
             <div href="/dashboard" class="brand-link d-flex align-items-center mb-3">
@@ -269,7 +265,6 @@
             }).addClass('active');
         });
 
-        // Toggle sidebar visibility
         $('#toggleSidebar').click(function() {
             $('.sidebar').toggleClass('sidebar-hidden');
             $('.content-wrapper').toggleClass('content-expanded');

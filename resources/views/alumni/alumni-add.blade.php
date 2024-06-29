@@ -9,6 +9,10 @@
         position: relative;
         left: -15rem;
     }
+    .error-message {
+            color: red;
+            display: none;
+        }
 </style>
 @section('content')
 
@@ -46,28 +50,36 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="firstName">FirstName</label>
-                      <input type="text" name="firstName" class="form-control @error('firstName') is-invalid @enderror" id="firstName" placeholder="FirstName" value="{{old('firstName')}}" required>
+                      <label for="firstName">First Name:</label>
+                      <input type="text" name="firstName" class="form-control @error('firstName') is-invalid @enderror" id="firstName" placeholder="FirstName" value="{{ old('firstName') }}" pattern="[A-Za-z]+" title="Please enter letters only." required>
                       @error('firstName')
                       <span class="invalid-feedback text-danger">{{ $message }}</span>
                       @enderror
+                      <span class="error-message" id="firstName-error">Please enter letters only.</span>
+
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="middleName">MiddleName</label>
-                      <input type="text" name="middleName" class="form-control @error('middleName') is-invalid @enderror" id="middleName" placeholder="MiddleName" value="{{old('middleName')}}" required oninput="addDot(this)">
+                      <input type="text" name="middleName" class="form-control @error('middleName') is-invalid @enderror" id="middleName" placeholder="Middle Name" value="{{ old('middleName') }}" pattern="[A-Za-z]+" title="Please enter letters only." required>
                       @error('middleName')
                       <span class="invalid-feedback text-danger">{{ $message }}</span>
                       @enderror
+                      <span class="error-message" id="middleName-error">Please enter letters only.</span>
+
+
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="lastName">LastName</label>
-                      <input type="text" name="lastName" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="LastName" value="{{old('lastName')}}" required>
+                      <input type="text" name="lastName" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="Last Name" value="{{ old('lastName') }}" pattern="[A-Za-z]+" title="Please enter letters only." required>
                       @error('lastName')
                       <span class="invalid-feedback text-danger">{{ $message }}</span>
                       @enderror
+                      <span class="error-message" id="lastName-error">Please enter letters only.</span>
+
                     </div>
                   </div>
                   <div class="col-lg-6">
@@ -253,97 +265,101 @@
                 </div>
               </div>
               <div class="card-footer text-center">
-                {{-- <button class="btn btn-dark mr-1" type="reset"><i class="fa-solid fa-arrows-rotate"></i>
-                  Reset</button> --}}
+
                 <button class="btn btn-success" type="submit"><i class="fa-solid fa-floppy-disk"></i>
                   Submit</button>
               </div>
             </form>
           </div>
         </div>
-        <!-- /.content -->
       </div>
     </div>
   </div>
 </div>
 
 <script>
+                    function updateDistrict() {
+
+                var city = document.getElementById('city').value;
+
+                var district = document.getElementById('district');
+
+                var districtValue = '';
 
 
 
-    function updateDistrict() {
+                if (['Calatrava', 'Don Salvador Benedicto', 'Escalante City', 'San Carlos City', 'Toboso'].includes(city)) {
 
-var city = document.getElementById('city').value;
+                districtValue = 'District 1';
 
-var district = document.getElementById('district');
+                } else if (['Cadiz City', 'Manapla', 'Sagay City'].includes(city)) {
 
-var districtValue = '';
+                districtValue = 'District 2';
 
+                } else if (['Murcia', 'Silay City', 'Talisay City', 'Victorias City'].includes(city)) {
 
+                districtValue = 'District 3';
 
-if (['Calatrava', 'Don Salvador Benedicto', 'Escalante City', 'San Carlos City', 'Toboso'].includes(city)) {
+                } else if (['Bago City', 'La Carlota City', 'Pontevedra', 'Pulupandan', 'San Enrique', 'Valladolid'].includes(city)) {
 
-districtValue = 'District 1';
+                districtValue = 'District 4';
 
-} else if (['Cadiz City', 'Manapla', 'Sagay City'].includes(city)) {
+                } else if (['Binalbagan', 'Himamaylan City', 'Hinigaran', 'La Castellana', 'Moises Padilla'].includes(city)) {
 
-districtValue = 'District 2';
+                districtValue = 'District 5';
 
-} else if (['Murcia', 'Silay City', 'Talisay City', 'Victorias City'].includes(city)) {
+                } else {
 
-districtValue = 'District 3';
+                districtValue = 'District 6';
 
-} else if (['Bago City', 'La Carlota City', 'Pontevedra', 'Pulupandan', 'San Enrique', 'Valladolid'].includes(city)) {
-
-districtValue = 'District 4';
-
-} else if (['Binalbagan', 'Himamaylan City', 'Hinigaran', 'La Castellana', 'Moises Padilla'].includes(city)) {
-
-districtValue = 'District 5';
-
-} else {
-
-districtValue = 'District 6';
-
-}
+                }
 
 
 
-district.value = districtValue;
+                district.value = districtValue;
 
-}
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-
-document.getElementById('city').addEventListener('change', updateDistrict);
-
-});
+                }
 
 
-function calculateAge() {
-        var birthdate = document.getElementById("birthdate").value;
-        if (birthdate) {
-            var today = new Date();
-            var birthDate = new Date(birthdate);
-            var age = today.getFullYear() - birthDate.getFullYear();
-            var monthDifference = today.getMonth() - birthDate.getMonth();
 
-            // Adjust age if birth month hasn't occurred yet this year
-            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-                age--;
-            }
+                document.addEventListener('DOMContentLoaded', function() {
 
-            document.getElementById("age").value = age;
-        }
-    }
+                document.getElementById('city').addEventListener('change', updateDistrict);
 
-    function addDot(input) {
-    if (input.value.length === 1 && /^[A-Za-z]$/.test(input.value)) {
-        input.value += '.';
-    }
-}
+                });
+
+
+                function calculateAge() {
+                        var birthdate = document.getElementById("birthdate").value;
+                        if (birthdate) {
+                            var today = new Date();
+                            var birthDate = new Date(birthdate);
+                            var age = today.getFullYear() - birthDate.getFullYear();
+                            var monthDifference = today.getMonth() - birthDate.getMonth();
+                            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                                age--;
+                            }
+
+                            document.getElementById("age").value = age;
+                        }
+                    }
+
+                document.querySelectorAll('input[pattern]').forEach(input => {
+            input.addEventListener('input', function () {
+                var errorMessage = document.getElementById(this.id + '-error');
+                if (this.value.match(/[^A-Za-z]/)) {
+                    errorMessage.style.display = 'inline';
+                    this.classList.add('is-invalid');
+                } else {
+                    errorMessage.style.display = 'none';
+                    this.classList.remove('is-invalid');
+                }
+            });
+        });
+
+
+
+
 
 </script>
 @endsection

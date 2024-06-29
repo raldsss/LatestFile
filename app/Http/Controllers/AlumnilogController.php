@@ -43,7 +43,6 @@ class AlumnilogController extends Controller
         if (!$alumni) {
             return redirect()->route('alumnilog')->withErrors('Please log in first.');
         }
-
         return view('surveyform', compact('alumni'));
     }
 }

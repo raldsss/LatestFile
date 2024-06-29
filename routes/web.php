@@ -32,40 +32,36 @@ Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 //route Alumni
 Route::resource('/alumni', AlumniController::class)->middleware('auth');
 
-
+//route Account change
 Route::get('/changeAccount', [AccountController::class, 'showChangeAccountForm'])->name('changeAccount');
-
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/user/{id_user}/edit', [AccountController::class, 'edit'])->name('user.edit');
     Route::put('/user/{id_user}', [AccountController::class, 'update'])->name('user.update');
 });
+//route send email
 Route::post('sendmail/', [GmailController::class, 'Send'])->name('sendmail.send');
 
-
+//route Alumni login and answer survey
 Route::post('/alumni/store/{alumni}', [EmploymentdataController::class, 'store'])->name('store');
 Route::get('/alumnilog', [AlumnilogController::class, 'showLoginForm'])->name('alumnilog');
 Route::post('/alumni/signin', [AlumnilogController::class, 'signin'])->name('alumni.signin');
 Route::get('/surveyform', [AlumnilogController::class, 'showSurveyForm'])->name('surveyform');
-
 Route::get('/response', function () {
     return view('response');
 })->name('response');
+
+//route Employment data
 Route::get('/employmentdata', [EmploymentdataController::class, 'index'])->name('employmentdata.index');
 Route::get('/employmentdata/{emp_id}/edit', [EmploymentDataController::class, 'edit'])->name('employmentdata.edit');
 Route::put('/employmentdata/{emp_id}', [EmploymentDataController::class, 'update'])->name('employmentdata.update');
 
-
+//route Alumni update credintials
 Route::get('/alumni/{alumni_id}/view', [AlumniController::class, 'edits'])->name('view');
 Route::put('/alumni/{alumni_id}/view', [AlumniController::class, 'upgrade'])->name('updatealumni');
-
 Route::get('/fetch-employment-data', 'EmploymentdataController@fetchEmploymentData')->name('fetch-employment-data');
-
 Route::get('/employmentdata/index', [EmploymentdataController::class, 'index'])->name('index.employmentdata');
+//route filtering months
 Route::get('/alumni/filter', [EmploymentdataController::class, 'filter'])->name('filter.alumni');
-
 Route::get('/filterAlumni', [AlumniController::class, 'filterAlumni']);
-// Route::get('alumni/import', [AlumniController::class, 'index']);
-// Route::post('alumni/import', [AlumniController::class, 'importExcel']);
-// Route::get('/getEmploymentData/{month}/{year}', [DashboardController::class, 'getEmploymentData']);
+//route graph
 Route::get('/getEmploymentData/{semiAnnual}/{year}', [DashboardController::class, 'getEmploymentData']);

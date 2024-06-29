@@ -18,10 +18,10 @@
    </script>
    @endif
 <style>
-     @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-        *{
-            font-family: 'Poppins';
-        }
+    @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+    *{
+        font-family: 'Poppins';
+    }
     .bold-blue {
         font-weight: bold;
         color: blue;
@@ -110,9 +110,7 @@
                                         @endforeach
                                     </select>
                                     <?php
-                                        // Default to current month and year
                                         $currentMonth = date('Y-m');
-                                        // Check if filter_month is set in the request
                                         if (request()->has('filter_month')) {
                                             $currentMonth = request('filter_month');
                                         }

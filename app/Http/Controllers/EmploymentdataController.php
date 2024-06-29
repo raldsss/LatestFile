@@ -21,22 +21,6 @@ class EmploymentdataController extends Controller
             'remarks' => 'nullable|string',
         ]);
 
-        // $currentMonth = date('m');
-        // $currentYear = date('Y');
-
-        // $existingEntry = Employmentdata::whereMonth('created_at', $currentMonth)
-        //                                ->whereYear('created_at', $currentYear)
-        //                                ->exists();
-
-        //     if ($existingEntry) {
-        //     return redirect()->back()->with('error', 'You have already submitted data for this month.');
-        // }
-
-
-        // $employmentdata = Employmentdata::create($request->all());
-
-        // Alert::success('Success', 'You successfully submitted!');
-        // return redirect()->route('response')->with('success', 'You successfully submitted!');
         $employmentdata = Employmentdata::create($request->all());
 
         Alert::success('Success', 'You Successfully submitted !');
@@ -47,17 +31,14 @@ class EmploymentdataController extends Controller
     {
         $alumni = Alumni::all();
         $employmentdata = Employmentdata::query();
-
         // Filter by batch number
         if ($request->filled('batchNumber')) {
             $employmentdata->where('batchNumber', $request->input('batchNumber'));
         }
-
         // Filter by employment status
         if ($request->filled('employment_status')) {
             $employmentdata->where('employment_status', $request->input('employment_status'));
         }
-
         // Filter by created_at month
         if ($request->filled('filter_month')) {
             $filterMonth = $request->input('filter_month');
@@ -82,9 +63,8 @@ class EmploymentdataController extends Controller
             '12' => 'December',
         ];
 
-        // Generate list of years (adjust this as per your application's needs)
         $currentYear = date('Y');
-        $years = range($currentYear, $currentYear - 10); // This gives you 10 years from current year
+        $years = range($currentYear, $currentYear - 10);
 
         return view('employmentdata.employmentdata', compact('alumni', 'employmentdata', 'months', 'years'));
     }

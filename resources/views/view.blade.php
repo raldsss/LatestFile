@@ -18,16 +18,16 @@
             background-color: #f8f9fa;
         }
 
-        /* Adjusted Navbar Styling */
+     
         .navbar-brand {
-            color: #fff; /* White text */
+            color: #fff;
             font-weight: bold;
-            text-align: center; /* Center the text */
-            width: 100%; /* Full width */
+            text-align: center;
+            width: 100%;
             letter-spacing: 2px;
         }
 
-        /* Form styling */
+
         .form-group {
             margin-bottom: 1rem;
         }
@@ -105,23 +105,23 @@
             width: 100%;
         }
         @media only screen and (max-width: 768px) {
-  .navbar, .navbar-dark, .bg-primary{
-    width: 100%;
-    background: #0079ad;
-  }
-  body{
-    width: 120vw;
-  }
-  .container{
-    position: relative;
-    left: -10px;
-    top: -5rem;
-  }
-}
-span{
-    font-size: 23px;
-    text-align: center;
-}
+        .navbar, .navbar-dark, .bg-primary{
+            width: 100%;
+            background: #0079ad;
+        }
+        body{
+            width: 120vw;
+        }
+        .container{
+            position: relative;
+            left: -10px;
+            top: -5rem;
+        }
+        }
+        span{
+            font-size: 23px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -362,15 +362,13 @@ span{
       </div>
 
                                 <div class="card-footer text-right">
-                                    {{-- <button class="btn btn-dark mr-1" type="reset"><i class="fa-solid fa-arrows-rotate"></i>
-                                        Reset</button> --}}
+
                                     <button class="btn btn-success" type="submit"><i class="fa-solid fa-floppy-disk"></i>
                                         Save</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <!-- /.content -->
                 </div>
             </div>
         </div>
@@ -385,7 +383,6 @@ span{
             var age = today.getFullYear() - birthDate.getFullYear();
             var monthDifference = today.getMonth() - birthDate.getMonth();
 
-            // Adjust age if birth month hasn't occurred yet this year
             if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
                 age--;
             }

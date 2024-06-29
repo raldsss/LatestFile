@@ -24,32 +24,8 @@ class DashboardController extends Controller
         $unEmployedCount = Employmentdata::where('employment_status', 'Unemployed')->count();
         $withJobOfferCount = Employmentdata::where('employment_status', 'With Job Offer')->count();
 
-                                        return view('dashboard.dashboard', compact('alumni', 'pendingAlumniCount', 'employmentdata','employedCount', 'unEmployedCount', 'withJobOfferCount'));
-                                    }
-
-
-//     public function getEmploymentData($month, $year)
-//     {
-//         $employedCount = Employmentdata::where('employment_status', 'Employed')
-//                                         ->whereMonth('created_at', $month)
-//                                         ->whereYear('created_at', $year)
-//                                         ->count();
-//         $unEmployedCount = Employmentdata::where('employment_status', 'Unemployed')
-//                                         ->whereMonth('created_at', $month)
-//                                         ->whereYear('created_at', $year)
-//                                         ->count();
-//         $withJobOfferCount = Employmentdata::where('employment_status', 'With Job Offer')
-//                                         ->whereMonth('created_at', $month)
-//                                         ->whereYear('created_at', $year)
-//                                         ->count();
-
-//         return response()->json([
-//             'employedCount' => $employedCount,
-//             'unEmployedCount' => $unEmployedCount,
-//             'withJobOfferCount' => $withJobOfferCount,
-//         ]);
-//     }
-// }
+        return view('dashboard.dashboard', compact('alumni', 'pendingAlumniCount', 'employmentdata','employedCount', 'unEmployedCount', 'withJobOfferCount'));
+    }
 
 public function getEmploymentData($semiAnnual, $year)
 {

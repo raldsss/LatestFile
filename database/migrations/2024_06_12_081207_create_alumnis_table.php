@@ -27,12 +27,11 @@ return new class extends Migration
             $table->string('sex');
             $table->string('nationality');
             $table->string('civil_status');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->integer('batchNumber');
             $table->string('training_status');
             $table->string('scholarship');
             $table->boolean('pending')->default(false);
-            // $table->boolean('survey_submitted')->default(false);
             $table->timestamps();
         });
     }
@@ -43,6 +42,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('alumnis');
-
     }
 };

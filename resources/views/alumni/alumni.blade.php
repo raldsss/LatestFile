@@ -304,15 +304,6 @@
             document.getElementById('sendToAll').disabled = false;
         }
     }
-
-
-
-
-
-
-
-
-
 </script>
 
 

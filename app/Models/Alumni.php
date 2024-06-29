@@ -30,9 +30,9 @@ class Alumni extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'alumnis'; // Ensure this matches your table name
+    protected $table = 'alumnis';
 
-    protected $primaryKey = 'alumni_id'; // Specify your primary key column
+    protected $primaryKey = 'alumni_id';
 
     protected $fillable = [
         'email', 'password', 'firstName', 'lastName', 'middleName',  'batchNumber', 'pending',

@@ -20,12 +20,11 @@
             background-color: #f8f9fa;
         }
 
-        /* Adjusted Navbar Styling */
         .navbar-brand {
-            color: #fff; /* White text */
+            color: #fff;
             font-weight: bold;
-            text-align: center; /* Center the text */
-            width: 100%; /* Full width */
+            text-align: center;
+            width: 100%;
             letter-spacing: 2px;
         }
 
@@ -100,7 +99,6 @@
             transform: translate(0);
         }
 
-        /* Centering the card */
         .container {
             display: flex;
             justify-content: center;
@@ -121,20 +119,19 @@
             color: #000;
         }
         @media only screen and (max-width: 768px) {
-  .navbar, .navbar-dark, .bg-primary{
-    width: 100%;
-    background: #0079ad;
-  }
-  body{
-    width: 120vw;
-  }
-  .container{
-    position: relative;
-    /* left: -10px;  */
-    top: -5rem;
-  }
-  .button__icon {
-            font-size: 23px;
+        .navbar, .navbar-dark, .bg-primary{
+            width: 100%;
+            background: #0079ad;
+        }
+        body{
+            width: 120vw;
+        }
+        .container{
+            position: relative;
+            top: -5rem;
+        }
+        .button__icon {
+                    font-size: 23px;
 
         }
 
@@ -142,11 +139,11 @@
 
             font-size: 23px;
 
-        }
+            }
 
 
-}
-.footer {
+    }
+        .footer {
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -197,7 +194,6 @@
     </script>
 @endif
 
-    <!-- Navbar -->
     <nav class="navbar navbar-dark bg-primary">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">SDTP Alumni Employment Survey</span>

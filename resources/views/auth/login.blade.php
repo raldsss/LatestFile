@@ -7,20 +7,17 @@
     <title>{{ $title }} | SDTP </title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="/assets/plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="/assets/dist/css/adminlte.min.css">
-
-            <link rel="icon" href="../background/logo.png" type="image/png">
-            <meta name="viewport" content="width=device-width, initial-scale=1.5">
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+       <link rel="icon" href="../background/logo.png" type="image/png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.5">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
         </head>
 
         <style>
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+        @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
         *{
             font-family: 'Poppins';
         }
@@ -29,36 +26,31 @@
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
 
         }
-
         .title{
 
               background: linear-gradient(#80FFDB, #64DFDF, #48BFE3, #5390D9, #5E60CE);
               border-radius: 5px;
+        }
 
+        img{
 
+            display: block;
 
+            margin-left: auto;
 
-            }
+            margin-right: auto;
 
-            img{
+            padding: 0;
 
-                display: block;
-
-                margin-left: auto;
-
-                margin-right: auto;
-
-                padding: 0;
-
-            }
-            #message{
-                color: red;
-            }
-            .forgot{
-                text-decoration: none;
-                position: relative;
-                top: -1px;
-            }
+        }
+        #message{
+            color: red;
+        }
+        .forgot{
+            text-decoration: none;
+            position: relative;
+            top: -1px;
+        }
 
             </style>
 

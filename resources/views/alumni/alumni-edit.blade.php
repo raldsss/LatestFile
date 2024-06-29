@@ -10,6 +10,10 @@
         position: relative;
         left: -15rem;
     }
+    .error-message {
+            color: red;
+            display: none;
+        }
 </style>
 
 
@@ -41,37 +45,40 @@
                                 </a>
                             </div>
                         </div>
-                        <form class="needs-validation" novalidate action="/alumni/{{ $alumni->alumni_id }}" method="POST">
-                            @csrf
-                            @method('PUT')
+<form class="needs-validation" novalidate action="/alumni/{{ $alumni->alumni_id }}" method="POST">
+    @csrf
+    @method('PUT')
 
 <div class="card-body">
     <div class="row">
       <div class="col-lg-6">
         <div class="form-group">
             <label for="name">Firstname</label>
-            <input type="text" name="firstName" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name Alumni" value="{{old('firstName', $alumni->firstName)}}" required>
+            <input type="text" name="firstName" class="form-control @error('name') is-invalid @enderror" id="firstName" placeholder="Name Alumni" value="{{old('firstName', $alumni->firstName)}}" pattern="[A-Za-z]+" title="Please enter letters only." required>
             @error('name')
             <span class="invalid-feedback text-danger">{{ $message }}</span>
             @enderror
+            <span class="error-message" id="firstName-error">Please enter letters only.</span>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
             <label for="middleName">Middlename</label>
-            <input type="text" name="middleName" class="form-control @error('middleName') is-invalid @enderror" id="middleName" placeholder="middleName" value="{{old('middleName', $alumni->middleName)}}"  required>
+            <input type="text" name="middleName" class="form-control @error('middleName') is-invalid @enderror" id="middleName" placeholder="middleName" value="{{old('middleName', $alumni->middleName)}}" pattern="[A-Za-z]+" title="Please enter letters only."  required>
             @error('middleName')
             <span class="invalid-feedback text-danger">{{ $message }}</span>
             @enderror
+            <span class="error-message" id="middleName-error">Please enter letters only.</span>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
             <label for="lastName">Lastname</label>
-            <input type="text" name="lastName" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="lastName" value="{{old('lastName', $alumni->lastName)}}" required>
+            <input type="text" name="lastName" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="lastName" value="{{old('lastName', $alumni->lastName)}}" pattern="[A-Za-z]+" title="Please enter letters only." required>
             @error('lastName')
             <span class="invalid-feedback text-danger">{{ $message }}</span>
             @enderror
+            <span class="error-message" id="lastName-error">Please enter letters only.</span>
         </div>
       </div>
       <div class="col-lg-6">
@@ -273,15 +280,13 @@
   </div>
 
                             <div class="card-footer text-right">
-                                {{-- <button class="btn btn-dark mr-1" type="reset"><i class="fa-solid fa-arrows-rotate"></i>
-                                    Reset</button> --}}
+
                                 <button class="btn btn-success" type="submit"><i class="fa-solid fa-floppy-disk"></i>
                                     Save</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <!-- /.content -->
             </div>
         </div>
     </div>
@@ -289,61 +294,52 @@
 
 
 <script>
+            function updateDistrict() {
+
+        var city = document.getElementById('city').value;
+
+        var district = document.getElementById('district');
+
+        var districtValue = '';
+
+        if (['Calatrava', 'Don Salvador Benedicto', 'Escalante City', 'San Carlos City', 'Toboso'].includes(city)) {
+
+        districtValue = 'District 1';
+
+        } else if (['Cadiz City', 'Manapla', 'Sagay City'].includes(city)) {
+
+        districtValue = 'District 2';
+
+        } else if (['Murcia', 'Silay City', 'Talisay City', 'Victorias City'].includes(city)) {
+
+        districtValue = 'District 3';
+
+        } else if (['Bago City', 'La Carlota City', 'Pontevedra', 'Pulupandan', 'San Enrique', 'Valladolid'].includes(city)) {
+
+        districtValue = 'District 4';
+
+        } else if (['Binalbagan', 'Himamaylan City', 'Hinigaran', 'La Castellana', 'Moises Padilla'].includes(city)) {
+
+        districtValue = 'District 5';
+
+        } else {
+
+        districtValue = 'District 6';
+
+        }
+
+        district.value = districtValue;
+
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+        document.getElementById('city').addEventListener('change', updateDistrict);
+
+        });
 
 
-
-    function updateDistrict() {
-
-var city = document.getElementById('city').value;
-
-var district = document.getElementById('district');
-
-var districtValue = '';
-
-
-
-if (['Calatrava', 'Don Salvador Benedicto', 'Escalante City', 'San Carlos City', 'Toboso'].includes(city)) {
-
-districtValue = 'District 1';
-
-} else if (['Cadiz City', 'Manapla', 'Sagay City'].includes(city)) {
-
-districtValue = 'District 2';
-
-} else if (['Murcia', 'Silay City', 'Talisay City', 'Victorias City'].includes(city)) {
-
-districtValue = 'District 3';
-
-} else if (['Bago City', 'La Carlota City', 'Pontevedra', 'Pulupandan', 'San Enrique', 'Valladolid'].includes(city)) {
-
-districtValue = 'District 4';
-
-} else if (['Binalbagan', 'Himamaylan City', 'Hinigaran', 'La Castellana', 'Moises Padilla'].includes(city)) {
-
-districtValue = 'District 5';
-
-} else {
-
-districtValue = 'District 6';
-
-}
-
-
-
-district.value = districtValue;
-
-}
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-
-document.getElementById('city').addEventListener('change', updateDistrict);
-
-});
-
-
-function calculateAge() {
+        function calculateAge() {
         var birthdate = document.getElementById("birthdate").value;
         if (birthdate) {
             var today = new Date();
@@ -351,7 +347,6 @@ function calculateAge() {
             var age = today.getFullYear() - birthDate.getFullYear();
             var monthDifference = today.getMonth() - birthDate.getMonth();
 
-            // Adjust age if birth month hasn't occurred yet this year
             if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
                 age--;
             }
@@ -365,6 +360,22 @@ function calculateAge() {
         input.value += '.';
     }
 }
+
+document.querySelectorAll('input[pattern]').forEach(input => {
+            input.addEventListener('input', function () {
+                var errorMessage = document.getElementById(this.id + '-error');
+                if (this.value.match(/[^A-Za-z]/)) {
+                    errorMessage.style.display = 'inline';
+                    this.classList.add('is-invalid');
+                } else {
+                    errorMessage.style.display = 'none';
+                    this.classList.remove('is-invalid');
+                }
+            });
+        });
+
+
+
 </script>
 
 @endsection

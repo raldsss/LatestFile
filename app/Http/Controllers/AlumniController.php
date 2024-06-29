@@ -1,16 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Imports\AlumnisImport;
 use App\Models\Alumni;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use Exception;
-use Carbon\Carbon;
+
 
 class AlumniController extends Controller
 {
@@ -81,7 +75,7 @@ class AlumniController extends Controller
             'sex' => 'required',
             'nationality' => 'required',
             'civil_status' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:alumnis,email',
             'batchNumber' => 'required',
             'training_status' => 'required',
             'scholarship' => 'required',
@@ -135,7 +129,7 @@ class AlumniController extends Controller
             'sex' => 'required',
             'nationality' => 'required',
             'civil_status' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:alumnis,email,'.$alumni_id.',alumni_id',
             'batchNumber' => 'required',
             'training_status' => 'required',
             'scholarship' => 'required',
@@ -143,14 +137,13 @@ class AlumniController extends Controller
 
         $alumniToUpdate = Alumni::findOrFail($alumni_id);
 
-        // Check if updating would create a duplicate with another alumni
         $existingAlumni = Alumni::where([
             ['firstName', '=', $validated['firstName']],
             ['middleName', '=', $validated['middleName']],
             ['lastName', '=', $validated['lastName']],
         ])->first();
 
-        if ($existingAlumni && $existingAlumni->id !== $alumniToUpdate->id) {
+        if ($existingAlumni && $existingAlumni->alumni_id !== $alumniToUpdate->alumni_id) {
             Alert::error('Error', 'Updating would create a duplicate with another alumni!');
             return back()->withInput();
         }
@@ -187,7 +180,7 @@ class AlumniController extends Controller
             'sex' => 'required|string',
             'nationality' => 'required|string',
             'civil_status' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:alumnis,email,'.$alumni_id.',alumni_id',
             'batchNumber' => 'required|integer',
             'training_status' => 'required|string',
             'scholarship' => 'required|string',
@@ -200,58 +193,11 @@ class AlumniController extends Controller
         return redirect()->route('surveyform', ['alumni_id' => $alumni_id])->with('success', 'Profile updated successfully.');
     }
 
+
     public function mail()
     {
         return view('alumni.alumni-sendmail');
     }
 
-//     public function import(Request $request)
-//     {
-//         $validator = Validator::make($request->all(), [
-//             'file' => 'required|mimes:csv,txt|max:2048',
-//         ]);
-
-//         if ($validator->fails()) {
-//             return redirect()->back()
-//                         ->withErrors($validator)
-//                         ->withInput();
-//         }
-
-//         $file = $request->file('file');
-//         $filePath = $file->getRealPath();
-
-//         $csvData = array_map('str_getcsv', file($filePath));
-
-//         foreach ($csvData as $key => $row) {
-//             if ($key == 0) {
-//                 continue;
-//             }
-
-//             $alumni = new Alumni();
-//             $alumni->firstName = $row[0];
-//             $alumni->middleName = $row[1];
-//             $alumni->lastName = $row[2];
-//             $alumni->streetAddress = $row[3];
-//             $alumni->barangay = $row[4];
-//             $alumni->city = $row[5];
-//             $alumni->district = $row[6];
-//             $alumni->province = $row[7];
-//             $alumni->region = $row[8];
-//             $alumni->birthdate = $row[9];
-//             $alumni->age = $row[10];
-//             $alumni->sex = $row[11];
-//             $alumni->nationality = $row[12];
-//             $alumni->civil_status = $row[13];
-//             $alumni->email = $row[14];
-//             $alumni->batchNumber = $row[15];
-//             $alumni->training_status = $row[16];
-//             $alumni->scholarship = $row[17];
-
-//             $alumni->save();
-//         }
-
-//         return redirect()->back()->with('success', 'Alumni imported successfully.');
-//     }
-// }
 
 }

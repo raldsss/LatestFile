@@ -26,11 +26,8 @@
             </div>
         </div>
     </div>
-
-
     <div class="content">
         <div class="container-fluid">
-            <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -41,14 +38,14 @@
                                 </a>
                             </div>
                         </div>
-                        <form class="needs-validation" novalidate action="/employmentdata/{{ $employmentdata->emp_id }}" method="POST">
-                            @csrf
-                            @method('PUT')
+        <form class="needs-validation" novalidate action="/employmentdata/{{ $employmentdata->emp_id }}" method="POST">
+        @csrf
+        @method('PUT')
 
-<div class="card-body">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="form-group">
+        <div class="card-body">
+            <divc lass="row">
+            <div class="col-lg-6">
+            <div class="form-group">
             <label for="batchNumber">firstname</label>
             <input type="number" name="batchNumber" class="form-control @error('batchNumber') is-invalid @enderror" id="batchNumber" placeholder="Name Alumni" value="{{old('batchNumber', $employmentdata->batchNumber)}}" required>
             @error('batchNumber')
@@ -111,19 +108,16 @@
 
         </div>
       </div>
-
-
-
-    </div>
+    </divc>
   </div>
 
-                            <div class="card-footer text-right">
-                                <button class="btn btn-success" type="submit"><i class="fa-solid fa-floppy-disk"></i>
-                                    Save</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            <div class="card-footer text-right">
+                <button class="btn btn-success" type="submit"><i class="fa-solid fa-floppy-disk"></i>
+                    Save</button>
+            </div>
+        </form>
+    </div>
+</div>
 
             </div>
         </div>

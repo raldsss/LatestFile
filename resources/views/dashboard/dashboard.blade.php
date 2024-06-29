@@ -77,9 +77,9 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-                    <h1 class="m-0">@yield('title')</h1>
-                </div>
-            </div>
+        <h1 class="m-0">@yield('title')</h1>
+    </div>
+</div>
 
 
 <div class="container">
@@ -202,12 +202,10 @@
                 });
         }
 
-        // Initialize chart with current semi-annual and year data
         const currentSemiAnnual = 1;
         const currentYear = new Date().getFullYear();
         fetchAndUpdateChart(currentSemiAnnual, currentYear);
 
-        // Add event listener to update chart when semi-annual period or year is changed
         document.getElementById('semiAnnualSelector').addEventListener('change', function() {
             const selectedSemiAnnual = this.value;
             const selectedYear = document.getElementById('yearSelector').value;
